@@ -1,10 +1,10 @@
 /* 
-Файл с логикой для входа
+Файл с логикой для страницы входа
 */
 
 import { login } from './api_client.js';
 import { saveUser } from './storage.js';
-
+import MenuPage from './menu_page.js';
 
 export default class LoginPage {
     private form: HTMLFormElement | null = null;
@@ -63,6 +63,7 @@ export default class LoginPage {
             if (data.success && data.user) {
                 saveUser(data.user);
                 console.log('Вход выполнен.');
+                new MenuPage().render();
             } else {
                 this.showError(data.error || 'Неверный логин или пароль.');
             }
