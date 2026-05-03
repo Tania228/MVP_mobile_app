@@ -31,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'mvp-mobile-app-1.onrender.com',
+    'mvp-mobile-app-2.onrender.com',
 ]
 
 

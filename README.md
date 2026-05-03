@@ -204,7 +204,7 @@ mvp_mobile_interface/
 
 Проект развёрнут на [Render](https://render.com).
 
-- **URL:** https://mvp-mobile-app-1.onrender.com
+- **URL:** https://mvp-mobile-app-2.onrender.com/
 
 Для деплоя используется:
 - `runtime.txt` для фиксации версии Python
