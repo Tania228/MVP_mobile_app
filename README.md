@@ -59,7 +59,7 @@ git clone <ссылка на репозиторий>
 cd mvp_mobile_interface
 ```
 
-### 2. Бэкенд (Python, Django)
+### 2. Настроить виртуальное окружение и установить зависимости
 
 ```
 python -m venv venv
@@ -68,18 +68,12 @@ source venv/bin/activate      # Linux/macOS
 venv\Scripts\activate         # Windows
 
 pip install -r requirements.txt
+
 python manage.py runserver
 ```
 
-### 3. Фронтенд (TypeScript / HTML/CSS)
+### 3. Фронтенд уже встроен в Django и не требует отдельного запуска.
 
-```
-cd frontend
-npm install typescript --save-dev
-npx tsc --watch               # компиляция TS → JS в папку dist/
-
-npx live-server frontend
-```
 
 ### 4. Тестовый вход 
 
@@ -180,21 +174,15 @@ npx live-server frontend
 ```
 mvp_mobile_interface/
 ├── backend/ # настройки Django
-│ └── settings.py
-├── backend_app/ # основное приложение с API и мок‑данными
-│ ├── views.py
-│ ├── urls.py
-│ └── ...
-├── frontend/
-│ ├── js/ # исходные TypeScript файлы
-│ ├── dist/ # скомпилированные JS (не в Git)
-│ ├── mobile.html # шаблоны страниц
-│ ├── mobile.css # стили (с поддержкой тем)
-│ └── tsconfig.json
-├── .env.example # пример переменных окружения
+├── backend_app/ # API и мок-данные
+├── templates/ # HTML-шаблоны (index.html)
+├── static/ # статические файлы (CSS, JS)
+├── frontend/ # исходные TypeScript файлы (для разработки)
+├── .env.example
 ├── .gitignore
-├── manage.py # точка входа Django
+├── manage.py
 ├── requirements.txt
+├── runtime.txt # версия Python для Render
 └── README.md
 ```
 
@@ -209,3 +197,16 @@ mvp_mobile_interface/
 
 -Для тёмной темы используются CSS-переменные (поддерживаются современными браузерами).
 
+---
+
+## Деплой
+
+
+Проект развёрнут на [Render](https://render.com).
+
+- **URL:** https://mvp-mobile-app-1.onrender.com
+
+Для деплоя используется:
+- `runtime.txt` для фиксации версии Python
+- `gunicorn` в качестве сервера
+- `whitenoise` для отдачи статики
