@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-agents</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mobile.css' %}">
+</head>
+<body>
+
+    <!-- Контейнер, в который динамически подставляются страницы (шаблоны) -->
+    <div id="app"></div>
+
+    <!-- Страница входа -->
+    <template id="login-template">
+        <div class="centered-page">
+            <form class="container-for-login">
+                <input type="email" class="email-mobile" placeholder="Введите email..." required>
+                <input type="password" class="password-mobile" placeholder="Введите пароль..." required>
+
+                <button class="login-btn-mobile">Войти</button>
+
+                <a href="#" class="register-mobile">Зарегистрироваться</a>
+            </form>
+        </div>
+    </template>
+
+    <!-- Главная страница (меню)-->
+    <template id="menu-template">
+            <div class="container-for-menu">
+                <h1 class="title-menu">Разделы</h1>
+                <button class="menu-button"  data-action="my-employees">
+                    <span>Мои нейросотрудники</span>
+                    <span class="indicator-dot"></span>
+                    <span class="badge">2</span>
+                </button>
+
+                <button class="menu-button"  data-action="ready-employees">
+                    <span>Готовые нейросотрудники</span>
+                    <span class="indicator-dot"></span>
+                    <span class="badge">1</span>
+                </button>
+                <button class="menu-button-settings"  data-action="settings">Настройки</button>
+            </div>
+    </template>
+
+    <!-- Мои нейрострудники -->
+    <template id="my-agents">
+        <div class="container-for-agents">
+            <button class="back-button-agents">← назад</button>
+            <h2 class="title-agents">Мои нейросотрудники</h2>
+            <div class="list-agents"></div>
+        </div>
+    </template>
+
+    <!-- Готовые нейросотрудники -->
+    <template id="ready-agents">
+        <div class="container-for-agents">
+            <button class="back-button-agents">← назад</button>
+            <h2 class="title-agents">Готовые нейросотрудники</h2>
+            <div class="list-agents"></div>
+        </div>
+    </template>
+
+    <!-- Общий шаблон карточки нейросотрудника (динамическое добавление) -->
+    <template id="employee-card-template">
+        <div class="employee-card">
+            <div class="employee-avatar"></div>
+            <div class="employee-info">
+                <div class="employee-name"></div>
+                <div class="employee-description"></div>
+                <div class="employee-status"></div>
+            </div>
+            <div class="employee-unread"></div>
+        </div>
+    </template>
+
+    <!-- Окно чата -->
+    <template id="chat-template">
+        <div class="chat-container">
+            <div class="chat-header">
+                <button class="chat-back-btn">← назад</button>
+                <h3 class="chat-employee-name">Название сотрудника</h3>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Напишите сообщение..." class="chat-input">
+                <button id="chat-send-btn" class="chat-send-btn">📤</button>
+                <button id="chat-attach-btn" class="chat-attach-btn">📎</button>
+                <button id="chat-voice-btn" class="chat-voice-btn">🎙️</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Страница настроек -->
+    <template id="settings-template">
+        <div class="container-settings">
+            <button class="chat-back-btn">← назад</button>
+            <h3 class="settings-header">Настройки</h3>
+
+            <div class="user-info">
+                <p>Пользователь: <span id="user-name"></span></p>
+                <p>Email: <span id="user-email"></span></p>
+            </div>
+
+            <div class="data-of-user"></div>
+            <button class="clear-cache">Очистить кэш</button>
+            <button class="theme-swicher"></button>
+            <button class="log-out">Выйти</button>
+        </div>
+    </template>
+
+    <script src="{% static 'dist/main.js' %}" type="module"></script>
+</body>
+</html>
